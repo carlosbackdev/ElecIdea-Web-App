@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Empresa de Electricidad</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header> 
+        <div class="menu-toggle" id="menu-toggle">
+            <!-- Icono hamburguesa con CSS -->
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>       
+        <nav>
+            <ul id="menu">
+                <li><a href="#">Inicio</a></li>
+                <li><a href="users.html">Usuarios</a></li>
+                <li><a href="registro.html">Registro</a></li>
+                <li><a href="#features">Características</a></li>
+                <li><a href="#contact">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="intro">
+            <div class="container">
+                <h1>Bienvenido a la App de Gestión para Empresas de Electricidad</h1>
+                <p>Gestiona tus proyectos y clientes de manera eficiente con nuestra aplicación especializada.</p>
+                <a href="#descarga" class="btn">Descargar App</a>
+            </div>
+        </section>
+
+        <section id="features">
+            <div class="container">
+                <h2>Características Principales</h2>
+                <div class="features-grid">
+                    <div class="feature">
+                        <i class="fas fa-project-diagram"></i>
+                        <h3>Gestión de Proyectos</h3>
+                        <p>Organiza y supervisa todos tus proyectos de manera eficiente.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-users"></i>
+                        <h3>Gestión de Clientes</h3>
+                        <p>Mantén un registro detallado de todos tus clientes y sus necesidades.</p>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-chart-line"></i>
+                        <h3>Informes y Análisis</h3>
+                        <p>Genera informes detallados para analizar el rendimiento de tu empresa.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="capturas">
+            <div class="container">
+                <h2>Capturas de la Aplicación</h2>
+                <div class="captura">
+                    <img src="captura1.jpg" alt="Captura de la app 1">
+                    <img src="captura2.jpg" alt="Captura de la app 2">
+                    <img src="captura3.jpg" alt="Captura de la app 3">
+                </div>
+            </div>
+        </section>
+
+        <section id="descarga">
+            <div class="container">
+                <h2>Descarga la App</h2>
+                <p>Accede a la mejor herramienta para gestionar tu empresa de electricidad. ¡Descárgala ahora!</p>
+                <div class="container_button">
+                <button href="#descarga" class="btn">Descargar App</button>
+                <a href="registro.html"><button href="registro.html" class="btn">Regístrate Aquí</button></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>Contacto</h2>
+                <p>¿Tienes alguna pregunta? ¡Contáctanos!</p>
+                <form action="contact-process.php" method="post">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                    
+                    <label for="email">Correo Electrónico:</label>
+                    <input type="email" id="email" name="email" required>
+                    
+                    <label for="mensaje">Mensaje:</label>
+                    <textarea id="mensaje" name="mensaje" required></textarea>
+                    
+                    <button type="submit">Enviar</button>
+                </form>
+
+
+                <div class="social-icons">
+                    <h3>Síguenos en nuestras redes sociales:</h3>
+                    <a href="https://bsky.app/profile/carlosbackdev.com" class="social-icon" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://linkedin.com/in/carlos-arroyo-dev" class="social-icon" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/carlosbackdev" class="social-icon" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://carlosbackdev.com" class="social-icon" target="_blank"><i class="fas fa-globe"></i></a>
+                </div>
+            </div>
+        </section>
+    </main>
+        <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 Gestión de Electricidad | Todos los derechos reservados</p>
+            <p>Creado por Carlos Arroyo</p>
+            <p>Visitame en <a href="https://carlosbackdev.com" target="_blank">carlosbackdev.com</a></p>
+        </div>
+    </footer>
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

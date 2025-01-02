@@ -1,0 +1,327 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+/* General styles for header */
+header {
+    background-color: #333;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+header nav {
+    position: relative;
+}
+
+header .menu-toggle {
+    display: none; /* Por defecto no se muestra */
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+header .menu-toggle .hamburger {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+}
+
+header .menu-toggle .hamburger span {
+    display: block;
+    height: 3px;
+    width: 100%;
+    background-color: #fff;
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Menú oculto por defecto */
+header nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 0;
+    margin: 0;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+header nav ul li a:hover {
+    background-color: #575757;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+    header .menu-toggle {
+        display: block; /* Mostrar ícono hamburguesa */
+    }
+
+    header nav ul {
+        flex-direction: column;
+        display: none; /* Ocultar menú por defecto */
+        background-color: #333; /* Fondo del menú desplegable */
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        padding: 0;
+        z-index: 1;
+    }
+
+    header nav ul.show {
+        display: flex; /* Mostrar menú cuando se activa */
+    }
+
+    header nav ul li {
+        text-align: center;
+        margin: 0;
+    }
+
+    header nav ul li a {
+        font-size: 1rem;
+        padding: 0.8rem;
+    }
+}
+
+/* Main */
+main {
+    padding: 2rem 2rem;
+    background: #e9ecef;
+}
+
+/* Section Registro */
+#registro {
+    max-width: 700px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 1.7rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#registro .container {
+    text-align: center;
+}
+
+#registro h1 {
+    margin-bottom: 1.5rem;
+    color: #4CAF50;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Gráfico de icono en CSS */
+.icon-container {
+    margin-bottom: 2rem;
+}
+
+.electric-icon {
+    width: 80px;
+    height: 80px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.electric-icon::before {
+    content: '';
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    width: 50px;
+    height: 50px;
+    background-color: #fff;
+    border-radius: 50%;
+}
+
+.electric-icon::after {
+    content: '';
+    position: absolute;
+    top: 28px;
+    left: 28px;
+    width: 24px;
+    height: 24px;
+    background-color: #4CAF50;
+    border-radius: 50%;
+}
+.note-margen {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+/* Formulario */
+#registro .form-group {
+    margin-bottom: 1.3rem;
+    position: relative;
+}
+
+#registro label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+#registro input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease;
+}
+
+#registro input:focus {
+    border-color: #4CAF50;
+    outline: none;
+}
+
+#registro button {
+    padding: 12px 25px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 100%;
+}
+
+#registro button:hover {
+    background-color: #45a049;
+}
+#benefits {
+    background-color: #f9f9f9;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 35px;
+}
+
+#benefits h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+#benefits ul {
+    list-style: none;
+    margin: 1rem 0;
+    padding: 0;
+    justify-items: center;
+}
+
+#benefits ul li {
+    font-size: 1.1rem;
+    color: #555;
+    margin: 0.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#benefits ul li i {
+    color: #4CAF50;
+}
+
+/* Nueva Sección de Llamada a la Acción */
+#cta {
+    background-color: #4CAF50;
+    color: #fff;
+    padding: 2rem;
+    text-align: center;
+    margin-top: 3rem;
+    border-radius: 30px;
+}
+
+#cta h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+#cta p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
+
+.cta-button {
+    padding: 12px 30px;
+    background-color: #fff;
+    color: #4CAF50;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    font-size: 1.1rem;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: #45a049;
+    color: #fff;
+    border-color: #45a049;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+    #registro {
+        max-width: 100%;
+        padding: 1rem;
+    }
+
+    #registro h1 {
+        font-size: 1.5rem;
+    }
+
+    #registro button {
+        font-size: 1rem;
+    }
+
+    #cta h2 {
+        font-size: 1.5rem;
+    }
+
+    #cta p {
+        font-size: 1rem;
+    }
+
+    .cta-button {
+        font-size: 1rem;
+    }
+}
+
+.message-box {
+    padding: 10px;
+    margin-top: 20px;
+    display: none;
+    border-radius: 5px;
+}
+.success {
+    background-color: #d4edda;
+    color: #155724;
+}
+.error {
+    background-color: #f8d7da;
+    color: #721c24;
+}
