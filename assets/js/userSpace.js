@@ -158,3 +158,49 @@ function getRecentProjects(nif) {
             console.error("Error al cargar los proyectos recientes:", error);
         });
 }
+
+
+//cargar los proyectos por nombre
+document.getElementById("searchButton2").addEventListener("click", function () {
+    const nif = document.getElementById("nif").innerText;
+    const name = document.getElementById("searchProyect").value.trim();
+    if (!name) {
+        alert("Por favor, ingresa un nombre para buscar.");
+        return; 
+    }
+
+    const projectsContainer = document.getElementById("proyectosData");
+    projectsContainer.innerHTML = "<p>Cargando resultados...</p>"; 
+
+    fetch(`http://localhost:8080/api/projects/${nif}/search?name=${name}`)
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("No existen proyectos con ese nombre.");
+            }
+        })
+        .then((projects) => {
+            if (projects && projects.length > 0) {
+                projectsContainer.innerHTML = ""; 
+                projects.forEach((project) => {
+                    const projectRow = document.createElement("div");
+                    projectRow.classList.add("proyect-row");
+                    projectRow.innerHTML = `
+                        <p>${project.projectName}</p>
+                        <p>${project.clientName}</p>
+                        <p>${project.projectType}</p>
+                        <p>${project.projectInfo}</p>
+                        <p>${project.projectDate ? formatDate(project.projectDate) : "Fecha no disponible"}</p>
+                    `;
+                    projectsContainer.appendChild(projectRow);
+                });
+            } else {
+                projectsContainer.innerHTML = "<p>No se encontraron proyectos que coincidan con la búsqueda.</p>";
+            }
+        })
+        .catch((error) => {
+            console.error("Error al buscar clientes por nombre:", error);
+            projectsContainer.innerHTML = "<p>No existen proyectos que coincidan con la busqueda.</p>";
+        });
+});
