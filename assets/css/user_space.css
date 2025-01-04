@@ -119,6 +119,7 @@ header nav ul li a:hover {
     }
 }
 
+
 /* Main Section Styles */
 main {
     padding: 3rem 1rem;
@@ -172,7 +173,7 @@ a.btn:hover {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
 }
-.clientesData{
+.clientesData, .proyectosData{
     display: flex;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 0.5rem;   
@@ -189,8 +190,14 @@ a.btn:hover {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+#title-row {
+    font-weight: bold;
+    color: #27AE60;
+    border-bottom: 2px solid #27AE60;
+    text-align: center;
+}
 
-.client-row, .factura-row {
+.client-row, .factura-row, .proyect-row {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     gap: 1rem;
@@ -202,11 +209,22 @@ a.btn:hover {
     margin-bottom: 1rem;
 }
 
-.client-row p, .factura-row p {
+.client-row p, .factura-row p, .proyect-row p {
     font-size: 1.1rem;
     color: #2C3E50;
     margin-bottom: auto;
     margin-top: auto;
+}
+
+@media (max-width: 800px) {
+    .client-row, .factura-row, .proyect-row {
+        display: flex;
+        flex-direction: column;
+    }
+    #title-row {
+        display: none;
+    }
+
 }
 
 .btn.small-btn {

@@ -44,39 +44,30 @@
             <div class="container">
                 <h2>Clientes</h2>
                 <input type="text" id="searchClient" class="search-bar" placeholder="Buscar cliente...">
-                <a href="/buscar" class="btn">Buscar</a>
+                <button id="searchButton" class="btn">Buscar</button>
+                <div class="client-row">
+                    <p id="title-row">Nombre</p>
+                    <p id="title-row">Direccion</p>
+                    <p id="title-row">Email</p>
+                    <p id="title-row">Telefono</p>
+                    <p id="title-row">Fecha de alta</p>
+                </div>
                 <div id="clientesData" class="clientesData">
-                    <!-- Ejemplo de filas con datos de clientes -->
-                    <div class="client-row">
-                        <p>Juan Pérez</p>
-                        <p>Calle Ficticia 123</p>
-                        <p>juanperez@email.com</p>
-                        <p>600000000</p>
-                        <p>01/01/2020</p>
-                    </div>
-                    <div class="client-row">
-                        <p>Ana Gómez</p>
-                        <p>Avenida Siempre Viva 456</p>
-                        <p>anagomez@email.com</p>
-                        <p>600111222</p>
-                        <p>15/03/2021</p>
-                    </div>
-                    <div class="client-row">
-                        <p>José Rodríguez</p>
-                        <p>Calle de la Luna 789</p>
-                        <p>joserodriguez@email.com</p>
-                        <p>600333444</p>
-                        <p>22/07/2022</p>
-                    </div>
                 </div>
             </div>
-        </section>
+        </section>        
 
         <section id="proyectos" class="section">
             <div class="container">
                 <h2>Últimos Proyectos</h2>
-                <div id="proyectosData" class="grid">
-                    <!-- Proyectos recientes -->
+                <div class="proyect-row">
+                <p id="title-row">Nombre del proyecto</p>
+                <p id="title-row">Cliente</p>
+                <p id="title-row">Tipo de proyecto</p>
+                <p id="title-row">Información</p>
+                <p id="title-row">Fecha del proyecto</p>
+                </div>
+                <div id="proyectosData" class="proyectosData">
                 </div>
             </div>
         </section>
