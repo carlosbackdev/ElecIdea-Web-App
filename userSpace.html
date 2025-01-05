@@ -43,9 +43,9 @@
         <section id="clientes" class="section">
             <div class="container">
                 <h2>Últimos Clientes</h2>
-                <input type="text" id="searchClient" class="search-bar" placeholder="Buscar cliente...">
+                <input type="text" id="searchClient" class="search-bar" placeholder="Buscar cliente... o pulse para ver todos">
                 <a id="searchButton" class="btn">Buscar</a>
-                <div class="client-row">
+                <div class="client-row" id="container-title-row" >
                     <p id="title-row">Nombre</p>
                     <p id="title-row">Direccion</p>
                     <p id="title-row">Email</p>
@@ -60,9 +60,9 @@
         <section id="proyectos" class="section">
             <div class="container">
                 <h2>Últimos Proyectos</h2>
-                <input type="text" id="searchProyect" class="search-bar" placeholder="Buscar proyecto...">
+                <input type="text" id="searchProyect" class="search-bar" placeholder="Buscar proyecto... o pulse para ver todos">
                 <a id="searchButton2" class="btn">Buscar</a>
-                <div class="proyect-row">
+                <div class="proyect-row" id="container-title-row">
                 <p id="title-row">Nombre del proyecto</p>
                 <p id="title-row">Cliente</p>
                 <p id="title-row">Tipo de proyecto</p>
@@ -77,31 +77,19 @@
         <section id="facturas" class="section">
             <div class="container">
                 <h2>Facturas Pendientes</h2>
-                <div id="facturasData">
-                    <!-- Ejemplo de filas con facturas -->
-                    <div class="factura-row">
-                        <p>12345</p>
-                        <p>Juan Pérez</p>
-                        <p>Calle Ficticia 123</p>
-                        <p>€100.00</p>
-                        <a href="" class="btn small-btn">Actualizar a Pagado</a>
+                <input type="text" id="searchBill" class="search-bar" placeholder="Buscar por nombre cliente">
+                <a id="searchButton3" class="btn">Buscar</a>                
+                    <div class="factura-row" id="container-title-row">
+                        <p id="title-row">Nombre del Cliente</p>
+                        <p id="title-row">Direccion</p>
+                        <p id="title-row">Total gasto en material</p>
+                        <p id="title-row">Horas realizadas</p>
+                        <p id="title-row">Total Factura</p>
+                        <p id="title-row">Estado de la factura</p>
+                        <p id="title-row">Fecha de la factura</p>
+                        <p id="title-row">&nbsp;</p>
                     </div>
-                    <div class="factura-row">
-                        <p>12346</p>
-                        <p>Ana Gómez</p>
-                        <p>Avenida Siempre Viva 456</p>
-                        <p>€150.00</p>
-                        <a href="" class="btn small-btn">Actualizar a Pagado</a>
-                    </div>
-                    <div class="factura-row">
-                        <p>12347</p>
-                        <p>José Rodríguez</p>
-                        <p>Calle de la Luna 789</p>
-                        <p>€200.00</p>
-                        <a href="" class="btn small-btn">Actualizar a Pagado</a>
-                    </div>
-                </div>
-            </div>
+                    <div id="facturasData" class="facturasData"></div>            </div>
         </section>
 
         <section id="finanzas" class="section1">
@@ -111,15 +99,15 @@
                     <div class="grid1">
                         <div class="card1">
                             <h3>Ingresos</h3>
-                            <p id="ingresos">€0.00</p>
+                            <p id="ingresos"><span id="Ingresos" style="color: rgb(0, 0, 0);"></span></p>
                         </div>
                         <div class="card1">
                             <h3>Gastos</h3>
-                            <p id="gastos">€0.00</p>
+                            <p id="gastos"><span id="Gastos" style="color: rgb(255, 145, 0);">0</p>
                         </div>
                         <div class="card1">
                             <h3>Beneficios</h3>
-                            <p id="beneficios">€0.00</p>
+                            <p id="beneficios"><span id="Beneficios">0</p>
                         </div>
                     </div>
                 </div>
@@ -129,9 +117,9 @@
 
     <footer>
         <div class="footer-container">
-            <p>&copy; 2025 Tu Empresa | Todos los derechos reservados</p>
+            <p>&copy; 2025 ElecIdea | Todos los derechos reservados</p>
             <p>Creado por Carlos Arroyo</p>
-            <p>Visítanos en <a href="https://tuempresa.com" target="_blank">tuempresa.com</a></p>
+            <p>Contacta en <a href="https://carlosbackdev.com" target="_blank">carlosbackdev.com</a></p>
         </div>
     </footer>
 

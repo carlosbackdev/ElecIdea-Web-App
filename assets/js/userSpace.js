@@ -27,6 +27,8 @@ window.onload = function() {
                     document.getElementById("nif").innerText = data.nif;
                     getRecentClients(data.nif);
                     getRecentProjects(data.nif);
+                    getBills(data.nif);
+                    getGains(data.nif)
                 } else {
                     console.error("No se recibieron datos del usuario");
                     window.location.href = "login.html";
@@ -81,12 +83,7 @@ function getRecentClients(nif) {
 document.getElementById("searchButton").addEventListener("click", function () {
     const nif = document.getElementById("nif").innerText;
     const name = document.getElementById("searchClient").value.trim();
-    if (!name) {
-        alert("Por favor, ingresa un nombre para buscar.");
-        return; 
-    }
-
-    const clientsContainer = document.getElementById("clientesData");
+     const clientsContainer = document.getElementById("clientesData");
     clientsContainer.innerHTML = "<p>Cargando resultados...</p>"; 
 
     fetch(`http://localhost:8080/api/clients/${nif}/search?name=${name}`)
@@ -164,11 +161,6 @@ function getRecentProjects(nif) {
 document.getElementById("searchButton2").addEventListener("click", function () {
     const nif = document.getElementById("nif").innerText;
     const name = document.getElementById("searchProyect").value.trim();
-    if (!name) {
-        alert("Por favor, ingresa un nombre para buscar.");
-        return; 
-    }
-
     const projectsContainer = document.getElementById("proyectosData");
     projectsContainer.innerHTML = "<p>Cargando resultados...</p>"; 
 
@@ -204,3 +196,157 @@ document.getElementById("searchButton2").addEventListener("click", function () {
             projectsContainer.innerHTML = "<p>No existen proyectos que coincidan con la busqueda.</p>";
         });
 });
+
+//cargar las facturas sin pagar
+function getBills(nif) {
+    fetch(`http://localhost:8080/api/bills/${nif}/all`)
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("Error al obtener los proyectos recientes");
+            }
+        })
+        .then((bills) => {
+            if (bills && bills.length > 0) {
+                const facturasContainer = document.getElementById("facturasData");
+                facturasContainer.innerHTML = "";
+                bills.forEach((bill) => {
+                    const facturaRow = document.createElement("div");
+                    facturaRow.classList.add("factura-row");
+                    facturaRow.innerHTML = `
+                        <p>${bill.name}</p>
+                        <p>${bill.address}</p>
+                        <p>${bill.totalMaterial}€</p>
+                        <p>${bill.hour}h</p>
+                        <p>${bill.total}€</p>
+                        <p>${bill.status}</p>
+                        <p>${bill.date ? formatDate(bill.date) : "Fecha no disponible"}</p>
+                    `;
+                    if (bill.status == "sin enviar") {
+                        facturaRow.innerHTML += `<a href="sendBill" class="btn small-btn sendBill" 
+                        data-bill-code="${bill.code}" data-bill-id="${bill.id}">Enviar Factura</a>
+                        `;
+                    }
+                    if (bill.status == "pendiente pago") {
+                        facturaRow.innerHTML += `<a href="payBill" class="btn small-btn payBill" data-bill-code="${bill.code}">Actualiza a pagado</a>
+                        `;
+                    }  
+                    facturasContainer.appendChild(facturaRow);
+                });
+            } else {
+                document.getElementById("facturasData").innerHTML = "<p>No se encontraron proyectos recientes.</p>";
+            }
+        })
+        .catch((error) => {
+            console.error("Error al cargar los proyectos recientes:", error);
+        });
+}
+
+//cargar las facturas por nombre
+document.getElementById("searchButton3").addEventListener("click", function () {
+    const nif = document.getElementById("nif").innerText;
+    const name = document.getElementById("searchBill").value.trim();
+    const facturasContainer = document.getElementById("facturasData");
+    facturasContainer.innerHTML = "<p>Cargando resultados...</p>"; 
+
+    fetch(`http://localhost:8080/api/bills/${nif}/search?name=${name}`)
+        .then((response) => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error("No existen clientes con ese nombre.");
+            }
+        })
+        .then((bills) => {
+            if (bills && bills.length > 0) {
+                facturasContainer.innerHTML = ""; 
+                bills.forEach((bill) => {
+                    const facturaRow = document.createElement("div");
+                    facturaRow.classList.add("factura-row");
+                    facturaRow.innerHTML = `
+                        <p>${bill.name}</p>
+                        <p>${bill.address}</p>
+                        <p>${bill.totalMaterial}€</p>
+                        <p>${bill.hour}h</p>
+                        <p>${bill.total}€</p>
+                        <p>${bill.status}</p>
+                        <p>${bill.date ? formatDate(bill.date) : "Fecha no disponible"}</p>
+                    `;
+                    if (bill.status == "sin enviar") {
+                        facturaRow.innerHTML += `<a href="sendBill" class="btn small-btn sendBill" 
+                        data-bill-code="${bill.code}" data-bill-id="${bill.id}">Enviar Factura</a>
+                        `;
+                    }
+                    if (bill.status == "pendiente pago") {
+                        facturaRow.innerHTML += `<a href="payBill" class="btn small-btn payBill" data-bill-code="${bill.code}">Actualiza a pagado</a>
+                        `;
+                    }  
+                    facturasContainer.appendChild(facturaRow);
+                });
+            } else {
+                facturasContainer.innerHTML = "<p>No se encontraron clientes que coincidan con la búsqueda.</p>";
+            }
+        })
+        .catch((error) => {
+            console.error("Error al buscar clientes por nombre:", error);
+            facturasContainer.innerHTML = "<p>No existen clientes que coincidan con la busqueda.</p>";
+        });
+});
+
+document.getElementById("facturasData").addEventListener("click", function (event) {
+    if (event.target.classList.contains("sendBill")) {
+        event.preventDefault(); 
+        const button = event.target;
+        button.disabled = true;
+        
+        const billCode = button.dataset.billCode;
+        const billId = button.dataset.billId;
+
+         fetch(`http://localhost:8080/api/bills/${billId}/send?billCode=${billCode}`, {
+            method: "POST",
+        })
+            .then((response) => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error("Error al enviar la factura: " + response.status);
+                }
+            })
+            .then((message) => {
+                alert(message);
+                console.log("Factura enviada con éxito:", message);
+            })
+            .catch((error) => {
+                console.error("Error al enviar la factura:", error);
+                alert("Ocurrió un error al intentar enviar la factura. Por favor, inténtelo de nuevo.");
+            })
+            .finally(() => {
+                button.disabled = false;
+            });
+    }
+
+    if (event.target.classList.contains("payBill")) {
+        event.preventDefault();
+        const billCode = event.target.dataset.billCode; 
+        console.log("Botón de actualizar a pagado clicado, código de factura:", billCode);
+        updateBillStatusToPaid(billCode); 
+    }
+});
+//obtener los ingresos
+function getGains(nif) {
+    fetch(`http://localhost:8080/api/bills/${nif}/gains`) 
+        .then((response) => {
+            if (response.ok) {
+                return response.text(); 
+            } else {
+                throw new Error("Error al obtener los ingresos.");
+            }
+        })
+        .then((totalPaid) => {
+            document.getElementById("Ingresos").innerText = `${totalPaid} €`;
+        })
+        .catch((error) => {
+            console.error("Error al cargar los ingresos:", error);
+        });
+}
