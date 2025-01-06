@@ -16,24 +16,38 @@
     </header>
     <main>
         <div class="container" id="titulo">
-            <h1>Consulta de Factura: <span id="invoice-code">ABC123DEF</span></h1>
+            <h1><i class="fas fa-barcode" id="iconb"></i>Consulta de Factura nº <span id="code"></span></h1>
         </div>
         <section id="invoice">
             <div class="container">
                 <h3>Datos del Cliente</h3>
                 <div class="invoice-details">
-                    <p><i class="fas fa-file-invoice"></i>Número de Factura: <span id="number">#12345</span></p>
-                    <p><i class="fas fa-project-diagram"></i>Proyecto: <span id="nameProyect">Placas Solares</span></p>
-                    <p><i class="fas fa-user"></i>Nombre de Cliente: <span id="nameClient">Juan Pérez</span></p>
-                    <p><i class="fas fa-map-marker-alt"></i>Dirección: <span id="addresClient">Calle de Juan, 123</span></p>
-                    <p><i class="fas fa-calendar-alt"></i>Fecha de Factura: <span id="date">20/12/2024</span></p>
-                    <p><i class="fas fa-euro-sign"></i>Total a Pagar: <span id="total">€150.00</span></p>
-                    <p><i class="fas fa-barcode"></i>Código de Factura: <span id="code">ABC123DEF</span></p>
+                    <p><i class="fas fa-file-invoice"></i>Número de Factura: <span id="number"></span></p>
+                    <p><i class="fas fa-project-diagram"></i>Proyecto: <span id="nameProyect"></span></p>
+                    <p><i class="fas fa-user"></i>Nombre de Cliente: <span id="nameClient"></span></p>
+                    <p><i class="fas fa-map-marker-alt"></i>Dirección: <span id="addresClient"></span></p>
+                    <p><i class="fas fa-calendar-alt"></i>Fecha de Factura: <span id="date"></span></p>
+                    <p><i class="fas fa-euro-sign"></i>Total a Pagar: <span id="total"></span></p>
                 </div>
                 <div class="payment-section">
                     <p>¿Quieres realizar el pago ahora?</p>
                     <button id="pay-button">Pagar Factura</button>
-                </div>
+                    <div id="paymentModal" class="payment-modal">
+                        <div class="modal-content">
+                            <span class="close" id="closeModal">&times;</span>
+                            <h3>Pasarela de Pago</h3>
+                            <p class="modal-description">Por favor, ingresa los detalles de tu tarjeta para completar el pago.</p>
+                            <form id="paymentForm">
+                                <label for="cardNumber">Número de tarjeta:</label>
+                                <input type="text" id="cardNumber" placeholder="XXXX XXXX XXXX XXXX" required>
+                                <label for="expiryDate">Fecha de expiración:</label>
+                                <input type="month" id="expiryDate" required>
+                                <label for="cvv">CVV:</label>
+                                <input type="text" id="cvv" placeholder="XXX" required>
+                                <button type="submit">Pagar</button>
+                            </form>
+                        </div>
+                    </div>
             </div>
         </section>
         <div class="divider"></div>
@@ -41,12 +55,11 @@
             <div class="container">
                 <h3>Datos de la Empresa</h3>
                 <div class="invoice-details">
-                    <p><i class="fas fa-building"></i>Nombre: <span id="nameCompany">ElecIdea</span></p>
-                    <p><i class="fas fa-map-marker-alt"></i>Dirección: <span id="addressCompany">Calle de Alcalá, Madrid</span></p>
-                    <p><i class="fas fa-envelope"></i>Email: <span id="emailCompany">info@elecidea.com</span></p>
-                    <p><i class="fas fa-phone"></i>Teléfono: <span id="phoneCompany">+34 656 565 656</span></p>
-                    <p><i class="fas fa-university"></i>IBAN: <span id="iban">ES76 1234 5678 9012 3456</span></p>
-                    <p><i class="fas fa-city"></i>Ciudad: <span id="cityCompany">Madrid</span></p>
+                    <p><i class="fas fa-building"></i>Nombre: <span id="nameCompany"></span></p>
+                    <p><i class="fas fa-map-marker-alt"></i>Dirección: <span id="addressCompany"></span></p>
+                    <p><i class="fas fa-envelope"></i>Email: <span id="emailCompany"></span></p>
+                    <p><i class="fas fa-phone"></i>Teléfono: <span id="phoneCompany"></span></p>
+                    <p><i class="fas fa-university"></i>IBAN: <span id="iban"></span></p>
                 </div>
             </div>
         </section>

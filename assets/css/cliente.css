@@ -72,6 +72,7 @@ main {
     margin: 1rem 0;
     margin-left: 28%;
 }
+
 @media screen and (max-width: 768px) {
     .invoice-details p {
         margin-left: 0;
@@ -184,4 +185,147 @@ footer {
 .invoice-details p i {
     margin-right: 10px;
     color: #4CAF50;
+}
+#iconb{
+    margin-right: 10px;
+    color: #4CAF50;
+    
+}
+.payment-modal {
+    display: none; /* Inicialmente está oculto */
+    position: fixed;
+    z-index: 1; /* Asegura que el modal esté encima del contenido */
+    left: 0;
+    top: 2px;
+    width: 100%;
+    height: 106%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente */
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+}
+
+.close {
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Estilo del formulario */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+form input {
+    margin: 10px 0;
+    padding: 10px;
+    font-size: 16px;
+}
+
+form button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #45a049;
+}
+/* Animaciones de entrada */
+.fade-in {
+    animation: fadeIn 1s ease-out forwards;
+}
+
+.slide-up {
+    animation: slideUp 1s ease-out forwards;
+}
+
+.scale-up {
+    animation: scaleUp 0.5s ease-out forwards;
+}
+
+/* Animación de desvanecimiento para los elementos */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Animación de deslizamiento hacia arriba */
+@keyframes slideUp {
+    from {
+        transform: translateY(50px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* Animación de escalado */
+@keyframes scaleUp {
+    from {
+        transform: scale(0.95);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Aplicar las animaciones a los elementos */
+header {
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
+}
+
+#titulo h1, #titulo #invoice-code {
+    opacity: 0;
+    animation: slideUp 1s ease-out forwards;
+}
+
+#invoice {
+    opacity: 0;
+    animation: slideUp 1.5s ease-out forwards;
+}
+
+.contact-button {
+    opacity: 0;
+    animation: scaleUp 2s ease-out forwards;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+footer {
+    opacity: 0;
+    animation: fadeIn 2s ease-out forwards;
+}
+
+/* Efecto hover de los botones */
+.contact-button:hover {
+    transform: scale(1.05);
 }
