@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Factura</title>
+    <link rel="stylesheet" href="../assets/css/cliente.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <h2>ElecIdea - Espacio de Clientes</h2>
+        </nav>
+    </header>
+    <main>
+        <div class="container" id="titulo">
+            <h1>Consulta de Factura: <span id="invoice-code">ABC123DEF</span></h1>
+        </div>
+        <section id="invoice">
+            <div class="container">
+                <h3>Datos del Cliente</h3>
+                <div class="invoice-details">
+                    <p><i class="fas fa-file-invoice"></i>Número de Factura: <span id="number">#12345</span></p>
+                    <p><i class="fas fa-project-diagram"></i>Proyecto: <span id="nameProyect">Placas Solares</span></p>
+                    <p><i class="fas fa-user"></i>Nombre de Cliente: <span id="nameClient">Juan Pérez</span></p>
+                    <p><i class="fas fa-map-marker-alt"></i>Dirección: <span id="addresClient">Calle de Juan, 123</span></p>
+                    <p><i class="fas fa-calendar-alt"></i>Fecha de Factura: <span id="date">20/12/2024</span></p>
+                    <p><i class="fas fa-euro-sign"></i>Total a Pagar: <span id="total">€150.00</span></p>
+                    <p><i class="fas fa-barcode"></i>Código de Factura: <span id="code">ABC123DEF</span></p>
+                </div>
+                <div class="payment-section">
+                    <p>¿Quieres realizar el pago ahora?</p>
+                    <button id="pay-button">Pagar Factura</button>
+                </div>
+            </div>
+        </section>
+        <div class="divider"></div>
+        <section id="invoice">
+            <div class="container">
+                <h3>Datos de la Empresa</h3>
+                <div class="invoice-details">
+                    <p><i class="fas fa-building"></i>Nombre: <span id="nameCompany">ElecIdea</span></p>
+                    <p><i class="fas fa-map-marker-alt"></i>Dirección: <span id="addressCompany">Calle de Alcalá, Madrid</span></p>
+                    <p><i class="fas fa-envelope"></i>Email: <span id="emailCompany">info@elecidea.com</span></p>
+                    <p><i class="fas fa-phone"></i>Teléfono: <span id="phoneCompany">+34 656 565 656</span></p>
+                    <p><i class="fas fa-university"></i>IBAN: <span id="iban">ES76 1234 5678 9012 3456</span></p>
+                    <p><i class="fas fa-city"></i>Ciudad: <span id="cityCompany">Madrid</span></p>
+                </div>
+            </div>
+        </section>
+        <div class="payment-section">
+            <p>¿Tienes dudas? Contacta con nuestro equipo de soporte.</p>
+            <a href="mailto:carlosbackdev@gmail.com" class="contact-button">Contactar Soporte</a>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-container">
+            <p>&copy; 2025 ElecIdea | Todos los derechos reservados</p>
+            <p>Creado por Carlos Arroyo</p>
+            <p>Visítame en <a href="https://carlosbackdev.com" target="_blank">carlosbackdev.com</a></p>
+        </div>
+    </footer>
+    <script src="../assets/js/cliente.js"></script>
+</body>
+</html>

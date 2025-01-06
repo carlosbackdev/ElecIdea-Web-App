@@ -1,0 +1,187 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+/* Header */
+header {
+    background-color: #333;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+header h2 {
+    color: #fff;
+    font-size: 1.8rem;
+    margin: 0;
+}
+
+/* Main */
+main {
+    padding: 2rem;
+}
+
+/* Invoice Title */
+#titulo {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+#titulo h1 {
+    font-size: 2.2rem;
+    color: #4CAF50;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+#titulo #invoice-code {
+    color: #333;
+    font-weight: normal;
+}
+
+/* Invoice Section */
+#invoice {
+    background-color: #fff;
+    padding: 3rem 2rem;
+    border-radius: 10px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    max-width: 800px;
+    margin: 2rem auto;
+}
+
+#invoice h3 {
+    font-size: 1.8rem;
+    color: #4CAF50;
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid #27AE60;
+    text-align: center;
+}
+
+.invoice-details p {
+    font-size: 1.2rem;
+    margin: 1rem 0;
+    margin-left: 28%;
+}
+@media screen and (max-width: 768px) {
+    .invoice-details p {
+        margin-left: 0;
+    }
+    
+}
+
+.invoice-details span {
+    font-weight: bold;
+}
+
+/* Payment Section */
+.payment-section {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+.payment-section p {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+}
+
+#pay-button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#pay-button:hover {
+    background-color: #45a049;
+}
+
+/* Contact Button */
+.contact-button {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.contact-button:hover {
+    background-color: #0056b3;
+}
+
+/* Divider */
+.divider {
+    border-top: 1px solid #ccc;
+    margin: 2rem 0;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.footer-container p {
+    margin: 5px 0;
+}
+
+.footer-container a {
+    color: #4CAF50;
+    text-decoration: none;
+}
+
+.footer-container a:hover {
+    text-decoration: underline;
+}
+
+/* Animaciones y Transiciones */
+#pay-button, .contact-button {
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#pay-button:hover, .contact-button:hover {
+    transform: scale(1.05);
+}
+
+/* Diseño Responsivo */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+    #invoice {
+        padding: 2rem 1rem;
+    }
+}
+
+/* Mejoras Visuales */
+.invoice-details p i {
+    margin-right: 10px;
+    color: #4CAF50;
+}

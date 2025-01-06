@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Espacio de Usuario - Gestión de Empresa de Electricidad</title>
-    <link rel="stylesheet" href="assets/css/user_space.css">
+    <link rel="stylesheet" href="../assets/css/user_space.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
@@ -36,7 +36,22 @@
                 <p>ID de usuario: <span id="userId"></span></p>
                 <p>Nombre de usuario: <span id="username"></span></p>
                 <p>NIF: <span id="nif"></span></p>
-                <a href="/changePassword" class="btn">Cambiar Contraseña</a>
+                
+                <!-- Botón para abrir el modal -->
+                <a href="javascript:void(0);" id="addSessionBtn" class="btn">Cambiar Contraseña</a>
+        
+                <!-- Modal para cambiar contraseña -->
+                <div id="passwordModal" class="modal">
+                    <div class="modal-content">
+                        <span id="closeModal" class="close">&times;</span>
+                        <h3>Cambiar Contraseña</h3>
+                        <form id="changePasswordForm">
+                            <input type="password" id="newPassword" name="newPassword" placeholder="Nueva contraseña" required>
+                            <input type="password" id="repeatPassword" name="repeatPassword" placeholder="Repite la contraseña" required>
+                            <button type="submit" id="changePasswordBtn" class="btn">Cambiar Contraseña</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -99,15 +114,15 @@
                     <div class="grid1">
                         <div class="card1">
                             <h3>Ingresos</h3>
-                            <p id="ingresos"><span id="Ingresos" style="color: rgb(0, 0, 0);"></span></p>
+                            <p ><span id="Ingresos" style="color: rgb(0, 0, 0);"></span></p>
                         </div>
                         <div class="card1">
                             <h3>Gastos</h3>
-                            <p id="gastos"><span id="Gastos" style="color: rgb(255, 145, 0);">0</p>
+                            <p ><span id="Gastos" style="color: rgb(255, 145, 0);"></span></p>
                         </div>
                         <div class="card1">
                             <h3>Beneficios</h3>
-                            <p id="beneficios"><span id="Beneficios">0</p>
+                            <p id="beneficios"><span id="Beneficios"></span></p>
                         </div>
                     </div>
                 </div>
@@ -123,6 +138,6 @@
         </div>
     </footer>
 
-    <script src="assets/js/userSpace.js"></script>
+    <script src="../assets/js/userSpace.js"></script>
 </body>
 </html>

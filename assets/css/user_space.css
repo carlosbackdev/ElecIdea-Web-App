@@ -294,6 +294,122 @@ border-bottom: 2px solid #27AE60;
         font-size: 0.75rem;
     }
 }
+/* Estilos para el modal */
+.modal {
+    display: none; 
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    justify-content: center;
+    align-items: center;
+}
+
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 300px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Estilos para el formulario dentro del modal */
+#changePasswordForm {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espaciado entre los elementos del formulario */
+}
+
+#changePasswordForm label {
+    font-size: 1.1rem;
+    color: #2C3E50;
+    margin-bottom: 0.5rem;
+}
+
+#changePasswordForm input {
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 1px solid #BDC3C7;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#changePasswordForm input:focus {
+    border-color: #27AE60;
+    box-shadow: 0 0 5px rgba(39, 174, 96, 0.5);
+    outline: none;
+}
+
+#changePasswordForm button {
+    padding: 1rem;
+    font-size: 1.1rem;
+    background-color: #27AE60;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+#changePasswordForm button:hover {
+    background-color: #2ECC71;
+    transform: translateY(-2px);
+}
+
+#changePasswordForm button:active {
+    transform: translateY(0);
+}
+
+/* Estilo general para el modal */
+.modal-content {
+    background-color: #fff;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 350px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.modal-content h3 {
+    font-size: 1.5rem;
+    color: #2C3E50;
+    margin-bottom: 1rem;
+}
+
+.modal-content .close {
+    font-size: 1.5rem;
+    color: #aaa;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+}
+
+.modal-content .close:hover {
+    color: #333;
+}
+
+
 
 
 footer {
@@ -353,4 +469,57 @@ footer {
     font-size: 2rem;
     font-weight: bold;
     color: #27AE60;
+}
+/* Animaciones */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+.slide-in {
+    transform: translateX(-100%);
+    animation: slideIn 0.5s forwards;
+}
+
+@keyframes slideIn {
+    to {
+        transform: translateX(0);
+    }
+}
+.fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeUp 0.8s forwards;
+}
+
+@keyframes fadeUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.shake {
+    animation: shake 0.5s;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(-5px);
+    }
+    50% {
+        transform: translateX(5px);
+    }
+    75% {
+        transform: translateX(-5px);
+    }
 }

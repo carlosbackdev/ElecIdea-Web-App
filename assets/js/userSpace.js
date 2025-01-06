@@ -28,7 +28,8 @@ window.onload = function() {
                     getRecentClients(data.nif);
                     getRecentProjects(data.nif);
                     getBills(data.nif);
-                    getGains(data.nif)
+                    getGains(data.nif);
+                    getCost(data.nif);
                 } else {
                     console.error("No se recibieron datos del usuario");
                     window.location.href = "login.html";
@@ -333,7 +334,7 @@ document.getElementById("facturasData").addEventListener("click", function (even
         updateBillStatusToPaid(billCode); 
     }
 });
-//obtener los ingresos
+// Obtener los ingresos
 function getGains(nif) {
     fetch(`http://localhost:8080/api/bills/${nif}/gains`) 
         .then((response) => {
@@ -344,9 +345,154 @@ function getGains(nif) {
             }
         })
         .then((totalPaid) => {
+            totalPaid = parseFloat(totalPaid);
+            if (isNaN(totalPaid)) {
+                totalPaid = 0; 
+            }
+
             document.getElementById("Ingresos").innerText = `${totalPaid} €`;
+            getCost(nif, totalPaid);
         })
         .catch((error) => {
             console.error("Error al cargar los ingresos:", error);
         });
 }
+
+// Obtener los gastos
+function getCost(nif, totalPaid) {
+    fetch(`http://localhost:8080/api/materials/${nif}/costs`) 
+        .then((response) => {
+            if (response.ok) {
+                return response.text(); 
+            } else {
+                throw new Error("Error al obtener los gastos.");
+            }
+        })
+        .then((totalCost) => {
+            totalCost = parseFloat(totalCost);
+            if (isNaN(totalCost)) {
+                totalCost = 0; 
+            }
+            document.getElementById("Gastos").innerText = `${totalCost} €`;
+            const beneficios = totalPaid - totalCost;
+            if(beneficios < 0){
+                document.getElementById("Beneficios").style.color = "red";
+            }
+            document.getElementById("Beneficios").innerText = `${beneficios} €`;
+        })
+        .catch((error) => {
+            console.error("Error al cargar los gastos:", error);
+        });
+}
+
+
+//modal contraseña 
+
+const modal = document.getElementById("passwordModal");
+const btn = document.getElementById("addSessionBtn");
+const span = document.getElementById("closeModal");
+btn.onclick = function() {
+    modal.style.display = "flex";
+}
+span.onclick = function() {
+    modal.style.display = "none";
+}
+window.onclick = function(event) {
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+}
+
+document.getElementById("changePasswordBtn").addEventListener("click", function() {
+    const userId = document.getElementById("userId").innerText;
+    const newPassword = document.getElementById("newPassword").value;
+    const repeatPassword = document.getElementById("repeatPassword").value;
+
+    if (!newPassword || !repeatPassword) {
+        alert("Por favor ingresa y repite la nueva contraseña.");
+        return;
+    }
+
+    if (newPassword !== repeatPassword) {
+        alert("Las contraseñas no coinciden. Por favor, inténtalo de nuevo.");
+        return;
+    }
+
+    const requestData = {
+        userId: userId,
+        newPassword: newPassword
+    };
+    fetch("http://localhost:8080/api/user/change-password", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(requestData)
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.status === "success") {
+            alert("Contraseña cambiada con éxito.");
+        } else {
+            alert("Error al cambiar la contraseña: " + data.message);
+        }
+    })
+    .catch(error => {
+        console.error("Error en la solicitud:", error);
+        alert("Hubo un error al cambiar la contraseña.");
+    });
+});
+
+
+//animaciones 
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mainContent = document.querySelector('main');
+    mainContent.classList.add('fade-in');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('header nav ul');
+
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+        if (navMenu.classList.contains('show')) {
+            navMenu.classList.add('slide-in');
+        } else {
+            navMenu.classList.remove('slide-in');
+        }
+    });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mainContent = document.querySelector('main');
+    mainContent.classList.add('fade-in');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navMenu = document.querySelector('header nav ul');
+
+    menuToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('show');
+        if (navMenu.classList.contains('show')) {
+            navMenu.classList.add('slide-in');
+        } else {
+            navMenu.classList.remove('slide-in');
+        }
+    });
+    const sections = document.querySelectorAll('section');
+    sections.forEach(section => {
+        section.classList.add('fade-up');
+    });
+
+    const buttons = document.querySelectorAll('.btn');
+    buttons.forEach(button => {
+        button.addEventListener('click', () => {
+            button.classList.add('shake');
+            setTimeout(() => {
+                button.classList.remove('shake');
+            }, 500);
+        });
+    });
+});
