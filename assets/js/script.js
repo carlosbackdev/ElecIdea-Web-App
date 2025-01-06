@@ -46,3 +46,34 @@ document.querySelectorAll("nav ul li a").forEach((link) => {
         setTimeout(() => this.classList.remove("active"), 300);
     });
 });
+
+document.getElementById("contactForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    document.getElementById("message").innerText = "Enviando mensaje...";
+    const nombre = document.getElementById("nombre").value;
+    const email = document.getElementById("email").value;
+    const mensaje = document.getElementById("mensaje").value;
+    const formData = new FormData();
+
+    formData.append('nombre', nombre);
+    formData.append('email', email);
+    formData.append('mensaje', mensaje);
+
+    document.getElementById("contactForm").reset();
+    try {
+        const response = await fetch('http://localhost:8080/api/contact', {
+            method: 'POST',
+            body: formData
+        });
+        const responseBody = await response.text();
+        if (response.ok) {
+            document.getElementById("message").innerText = "Mensaje enviado con éxito. ¡Gracias por contactarnos!";
+        } else {
+            document.getElementById("message").innerText = "Hubo un error al enviar el mensaje. Intenta de nuevo.";
+        }
+    } catch (error) {
+        document.getElementById("message").innerText = "Hubo un error de conexión. Intenta de nuevo.";
+    }
+});
+
