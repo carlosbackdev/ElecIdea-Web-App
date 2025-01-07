@@ -28,7 +28,7 @@ The website is built using **HTML**, **CSS**, and **JavaScript**. JavaScript pla
 - **HTML**: Structuring web pages 🌐
 - **CSS**: Styling the app 🎨
 - **Netlify**: Hosting the app 🌐
-- ++VisualStudioCode++:📝
+- **VisualStudioCode**:📝
 
 ## Captures
 ![image](https://github.com/user-attachments/assets/2616bc1c-3b68-4a02-943d-7cec50835d24)
