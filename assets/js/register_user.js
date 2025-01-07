@@ -33,7 +33,7 @@ document.getElementById('registerForm').addEventListener('submit', function(even
         password: password
     };
 
-    fetch('https://elecidea-app-11344837389.europe-west1.run.app/api/user/register?companyCode=' + companyCode, {
+    fetch('https://elecideaapirest-production.up.railway.app/api/user/register?companyCode=' + companyCode, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

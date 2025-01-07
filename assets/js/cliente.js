@@ -2,7 +2,7 @@ window.onload = async function() {
     const urlParams = new URLSearchParams(window.location.search);
     const billCode = urlParams.get('codigo');    
     if (billCode) {
-        const billResponse = await fetch(`https://elecidea-app-11344837389.europe-west1.run.app/api/bills?codigo=${billCode}`);
+        const billResponse = await fetch(`https://elecideaapirest-production.up.railway.app/api/bills?codigo=${billCode}`);
         if (billResponse.ok) {
             const billData = await billResponse.json();
 
@@ -16,7 +16,7 @@ window.onload = async function() {
 
             const nif = billData.nif;
             
-            const companyResponse = await fetch(`https://elecidea-app-11344837389.europe-west1.run.app/api/companies/${nif}`);
+            const companyResponse = await fetch(`https://elecideaapirest-production.up.railway.app/api/companies/${nif}`);
             if (companyResponse.ok) {
                 const companyData = await companyResponse.json();
 

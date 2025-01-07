@@ -17,7 +17,7 @@ window.onload = function() {
     const userId = localStorage.getItem("userId");
 
     if (userId) {
-        fetch(`https://elecidea-app-11344837389.europe-west1.run.app/api/user/${userId}/data`) // Cambia esta URL para obtener los datos del usuario desde el backend
+        fetch(`https://elecideaapirest-production.up.railway.app/api/user/${userId}/data`) // Cambia esta URL para obtener los datos del usuario desde el backend
             .then((response) => response.json())
             .then((data) => {
                 if (data) {
@@ -46,7 +46,7 @@ window.onload = function() {
 
 //cargo los clientes recientes
 function getRecentClients(nif) {
-    fetch(`https://elecidea-app-11344837389.europe-west1.run.app/api/clients/${nif}/recent`) 
+    fetch(`https://elecideaapirest-production.up.railway.app/api/clients/${nif}/recent`) 
         .then((response) => {
             if (response.ok) {
                 return response.json();
@@ -87,7 +87,7 @@ document.getElementById("searchButton").addEventListener("click", function () {
      const clientsContainer = document.getElementById("clientesData");
     clientsContainer.innerHTML = "<p>Cargando resultados...</p>"; 
 
-    fetch(`https://elecidea-app-11344837389.europe-west1.run.app/api/clients/${nif}/search?name=${name}`)
+    fetch(`https://elecideaapirest-production.up.railway.app/api/clients/${nif}/search?name=${name}`)
         .then((response) => {
             if (response.ok) {
                 return response.json();
@@ -124,7 +124,7 @@ document.getElementById("searchButton").addEventListener("click", function () {
 
 //cargar los proyectos recientes
 function getRecentProjects(nif) {
-    fetch(`https://elecidea-app-11344837389.europe-west1.run.app/api/projects/${nif}/recent`)
+    fetch(`https://elecideaapirest-production.up.railway.app/api/projects/${nif}/recent`)
         .then((response) => {
             if (response.ok) {
                 return response.json();
@@ -165,7 +165,7 @@ document.getElementById("searchButton2").addEventListener("click", function () {
     const projectsContainer = document.getElementById("proyectosData");
     projectsContainer.innerHTML = "<p>Cargando resultados...</p>"; 
 
-    fetch(`https://elecidea-app-11344837389.europe-west1.run.app/api/projects/${nif}/search?name=${name}`)
+    fetch(`https://elecideaapirest-production.up.railway.app/api/projects/${nif}/search?name=${name}`)
         .then((response) => {
             if (response.ok) {
                 return response.json();
@@ -200,7 +200,7 @@ document.getElementById("searchButton2").addEventListener("click", function () {
 
 //cargar las facturas sin pagar
 function getBills(nif) {
-    fetch(`https://elecidea-app-11344837389.europe-west1.run.app/api/bills/${nif}/all`)
+    fetch(`https://elecideaapirest-production.up.railway.app/api/bills/${nif}/all`)
         .then((response) => {
             if (response.ok) {
                 return response.json();
@@ -251,7 +251,7 @@ document.getElementById("searchButton3").addEventListener("click", function () {
     const facturasContainer = document.getElementById("facturasData");
     facturasContainer.innerHTML = "<p>Cargando resultados...</p>"; 
 
-    fetch(`https://elecidea-app-11344837389.europe-west1.run.app/api/bills/${nif}/search?name=${name}`)
+    fetch(`https://elecideaapirest-production.up.railway.app/api/bills/${nif}/search?name=${name}`)
         .then((response) => {
             if (response.ok) {
                 return response.json();
@@ -304,7 +304,7 @@ document.getElementById("facturasData").addEventListener("click", function (even
         const billCode = button.dataset.billCode;
         const billId = button.dataset.billId;
 
-         fetch(`https://elecidea-app-11344837389.europe-west1.run.app/api/bills/${billId}/send?billCode=${billCode}`, {
+         fetch(`https://elecideaapirest-production.up.railway.app/api/bills/${billId}/send?billCode=${billCode}`, {
             method: "POST",
         })
             .then((response) => {
@@ -336,7 +336,7 @@ document.getElementById("facturasData").addEventListener("click", function (even
 });
 // Obtener los ingresos
 function getGains(nif) {
-    fetch(`https://elecidea-app-11344837389.europe-west1.run.app/api/bills/${nif}/gains`) 
+    fetch(`https://elecideaapirest-production.up.railway.app/api/bills/${nif}/gains`) 
         .then((response) => {
             if (response.ok) {
                 return response.text(); 
@@ -360,7 +360,7 @@ function getGains(nif) {
 
 // Obtener los gastos
 function getCost(nif, totalPaid) {
-    fetch(`https://elecidea-app-11344837389.europe-west1.run.app/api/materials/${nif}/costs`) 
+    fetch(`https://elecideaapirest-production.up.railway.app/api/materials/${nif}/costs`) 
         .then((response) => {
             if (response.ok) {
                 return response.text(); 
@@ -422,7 +422,7 @@ document.getElementById("changePasswordBtn").addEventListener("click", function(
         userId: userId,
         newPassword: newPassword
     };
-    fetch("https://elecidea-app-11344837389.europe-west1.run.app/api/user/change-password", {
+    fetch("https://elecideaapirest-production.up.railway.app/api/user/change-password", {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
