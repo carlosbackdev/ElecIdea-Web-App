@@ -81,7 +81,8 @@ function getRecentClients(nif) {
         });
 }
 //cargo los clientes por nombre
-document.getElementById("searchButton").addEventListener("click", function () {
+document.getElementById("searchButton").addEventListener("click", function (event) {
+    event.preventDefault();
     const nif = document.getElementById("nif").innerText;
     const name = document.getElementById("searchClient").value.trim();
      const clientsContainer = document.getElementById("clientesData");
@@ -474,12 +475,6 @@ document.getElementById("changePasswordBtn").addEventListener("click", function(
         console.error("Error en la solicitud:", error);
         alert("Hubo un error al cambiar la contraseña.");
     });
-});
-
-//recargar la página
-document.getElementById("searchButton").addEventListener("click", function (event) {
-    event.preventDefault(); 
-    location.reload(); 
 });
 
 //animaciones 
