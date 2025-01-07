@@ -60,6 +60,24 @@ function handlePaymentModal() {
         document.getElementById("paymentModal").style.display = "none";
     });
 }
+//validar formulario
+document.getElementById('paymentForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const cardNumber = document.getElementById('cardNumber').value;
+    const expiryDate = document.getElementById('expiryDate').value;
+    const cvv = document.getElementById('cvv').value;
+
+    if (!/^(\d{4} \d{4} \d{4} \d{4})$/.test(cardNumber)) {
+        alert('El número de tarjeta es incorrecto.');
+        return;
+    }
+    alert('Pago realizado con éxito.');
+});
+document.getElementById('closeModal').addEventListener('click', function() {
+    document.getElementById('paymentModal').style.display = 'none';
+});
+
+
 
 //animaciones 
 document.addEventListener("DOMContentLoaded", function() {

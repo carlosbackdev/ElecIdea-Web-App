@@ -1,0 +1,22 @@
+# robots.txt para https://elecide.com
+
+# Permitir que todos los robots accedan a todo el sitio
+User-agent: *
+Disallow:
+
+# Especificar la ubicación del sitemap para facilitar la indexación
+Sitemap: https://elecide.com/sitemap.xml
+
+# Prevenir que se indexen archivos temporales o de recursos sensibles (ajustar según sea necesario)
+Disallow: /assets/
+Disallow: /tmp/
+Disallow: /admin/
+Disallow: /login/
+Disallow: /register/
+Disallow: /privacy.html
+Disallow: /terms.html
+
+# Otras reglas para bots específicos pueden añadirse aquí si es necesario
+# Ejemplo: Bloquear a un bot en particular
+# User-agent: BadBot
+# Disallow: /
