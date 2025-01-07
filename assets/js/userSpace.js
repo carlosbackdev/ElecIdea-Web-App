@@ -379,7 +379,7 @@ function getGains(nif) {
                 totalPaid = 0; 
             }
 
-            document.getElementById("Ingresos").innerText = `${totalPaid} €`;
+            document.getElementById("Ingresos").innerText = `${totalPaid.toFixed(2)} €`;
             getCost(nif, totalPaid);
         })
         .catch((error) => {
@@ -402,12 +402,12 @@ function getCost(nif, totalPaid) {
             if (isNaN(totalCost)) {
                 totalCost = 0; 
             }
-            document.getElementById("Gastos").innerText = `${totalCost} €`;
+            document.getElementById("Gastos").innerText = `${totalCost.toFixed(2)} €`;
             const beneficios = totalPaid - totalCost;
+            document.getElementById("Beneficios").innerText = `${beneficios.toFixed(2)} €`;
             if(beneficios < 0){
                 document.getElementById("Beneficios").style.color = "red";
             }
-            document.getElementById("Beneficios").innerText = `${beneficios} €`;
         })
         .catch((error) => {
             console.error("Error al cargar los gastos:", error);
