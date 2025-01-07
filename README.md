@@ -1,6 +1,6 @@
-# ⚡ [ElecIdea](https://www.elecida.com) Web Application ⚡
+# ⚡ [ElecIdea](https://www.elecidea.com) Web Application ⚡
 
-Welcome to **Elecide**, a web application for managing clients and electrical invoices. This web app inherits the functionalities of the Elecidea application and offers the following features: [www.elecidea.com](https://www.elecida.com)
+Welcome to **Elecide**, a web application for managing clients and electrical invoices. This web app inherits the functionalities of the Elecidea application and offers the following features: [www.elecidea.com](https://www.elecidea.com)
 
 ## Features
 - **Download the app** 📲
