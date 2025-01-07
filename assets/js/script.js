@@ -62,7 +62,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
 
     document.getElementById("contactForm").reset();
     try {
-        const response = await fetch('http://localhost:8080/api/contact', {
+        const response = await fetch('https://elecidea-app-11344837389.europe-west1.run.app/api/contact', {
             method: 'POST',
             body: formData
         });

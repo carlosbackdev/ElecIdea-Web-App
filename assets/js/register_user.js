@@ -33,7 +33,7 @@ document.getElementById('registerForm').addEventListener('submit', function(even
         password: password
     };
 
-    fetch('http://localhost:8080/api/user/register?companyCode=' + companyCode, {
+    fetch('https://elecidea-app-11344837389.europe-west1.run.app/api/user/register?companyCode=' + companyCode, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -48,7 +48,7 @@ document.getElementById('registerForm').addEventListener('submit', function(even
             messageBox.className = 'message-box success';
             
             setTimeout(() => {
-                window.location.href = 'file:///A:/PROGRAMACION/ElecIdea/index.html'; // Cambia esta URL según la página a la que quieras redirigir
+                window.location.href = 'https://www.elecidea.com'; // Cambia esta URL según la página a la que quieras redirigir
             }, 3000); 
 
         } else {

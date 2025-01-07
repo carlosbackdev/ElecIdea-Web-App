@@ -20,7 +20,7 @@ document.getElementById('registerForm').addEventListener('submit', function(even
         phone: phone
     };
 
-    fetch('http://localhost:8080/api/companies/register', {
+    fetch('https://elecidea-app-11344837389.europe-west1.run.app/api/companies/register', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

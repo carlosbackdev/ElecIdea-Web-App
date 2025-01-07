@@ -4,7 +4,7 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
     const usuario = document.getElementById("usuario").value;
     const password = document.getElementById("password").value;
 
-    fetch("http://localhost:8080/api/user/login", {
+    fetch("https://elecidea-app-11344837389.europe-west1.run.app/api/user/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ usuario, password }),
