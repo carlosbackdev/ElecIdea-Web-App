@@ -246,6 +246,9 @@ function getBills(nif) {
 
 //cargar las facturas por nombre
 document.getElementById("searchButton3").addEventListener("click", function () {
+    loadBills(); 
+});
+function loadBills() {
     const nif = document.getElementById("nif").innerText;
     const name = document.getElementById("searchBill").value.trim();
     const facturasContainer = document.getElementById("facturasData");
@@ -291,10 +294,10 @@ document.getElementById("searchButton3").addEventListener("click", function () {
         })
         .catch((error) => {
             console.error("Error al buscar clientes por nombre:", error);
-            facturasContainer.innerHTML = "<p>No existen clientes que coincidan con la busqueda.</p>";
+            facturasContainer.innerHTML = "<p>No existen clientes que coincidan con la búsqueda.</p>";
         });
-});
-
+}
+// Enviar factura y actualizar a "pagado"
 document.getElementById("facturasData").addEventListener("click", function (event) {
     if (event.target.classList.contains("sendBill")) {
         event.preventDefault(); 
@@ -304,7 +307,7 @@ document.getElementById("facturasData").addEventListener("click", function (even
         const billCode = button.dataset.billCode;
         const billId = button.dataset.billId;
 
-         fetch(`https://elecideaapirest-production.up.railway.app/api/bills/${billId}/send?billCode=${billCode}`, {
+        fetch(`https://elecideaapirest-production.up.railway.app/api/bills/${billId}/send?billCode=${billCode}`, {
             method: "POST",
         })
             .then((response) => {
@@ -317,6 +320,7 @@ document.getElementById("facturasData").addEventListener("click", function (even
             .then((message) => {
                 alert(message);
                 console.log("Factura enviada con éxito:", message);
+                loadBills(); 
             })
             .catch((error) => {
                 console.error("Error al enviar la factura:", error);
@@ -334,6 +338,30 @@ document.getElementById("facturasData").addEventListener("click", function (even
         updateBillStatusToPaid(billCode); 
     }
 });
+
+// Actualizar factura a pagado
+function updateBillStatusToPaid(billCode) {
+    fetch(`https://elecideaapirest-production.up.railway.app/api/bills/${billCode}/pay`, {
+        method: "POST",
+    })
+        .then((response) => {
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw new Error("Error al actualizar el estado de la factura a pagado: " + response.status);
+            }
+        })
+        .then((message) => {
+            alert(message);
+            console.log("Factura actualizada a pagado con éxito:", message);
+            loadBills(); 
+        })
+        .catch((error) => {
+            console.error("Error al actualizar la factura a pagado:", error);
+            alert("Ocurrió un error al intentar actualizar la factura a pagado. Por favor, inténtelo de nuevo.");
+        });
+}
+
 // Obtener los ingresos
 function getGains(nif) {
     fetch(`https://elecideaapirest-production.up.railway.app/api/bills/${nif}/gains`) 
@@ -448,6 +476,11 @@ document.getElementById("changePasswordBtn").addEventListener("click", function(
     });
 });
 
+//recargar la página
+document.getElementById("searchButton").addEventListener("click", function (event) {
+    event.preventDefault(); 
+    location.reload(); 
+});
 
 //animaciones 
 

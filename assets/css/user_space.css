@@ -470,6 +470,10 @@ footer {
     font-weight: bold;
     color: #27AE60;
 }
+.reload{
+    margin-top: 23px;
+    text-align: center;
+}
 /* Animaciones */
 .fade-in {
     opacity: 0;

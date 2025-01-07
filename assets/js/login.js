@@ -21,3 +21,45 @@ document.getElementById("loginForm").addEventListener("submit", function (e) {
         })
         .catch((error) => console.error("Error:", error));
 });
+
+//animaciones
+document.addEventListener("DOMContentLoaded", () => {
+    const loginButton = document.querySelector(".login-btn");
+    loginButton.addEventListener("mouseover", () => {
+        loginButton.style.transform = "scale(1.05)";
+        loginButton.style.transition = "transform 0.3s ease";
+        loginButton.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.2)";
+    });
+    loginButton.addEventListener("mouseout", () => {
+        loginButton.style.transform = "scale(1)";
+        loginButton.style.boxShadow = "none"; 
+    });
+
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+                entry.target.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach((section) => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(50px)";
+        observer.observe(section);
+    });
+
+    const menuLinks = document.querySelectorAll("header nav ul li a");
+    menuLinks.forEach(link => {
+        link.addEventListener("mouseover", () => {
+            link.style.transform = "scale(1.05)";
+            link.style.transition = "transform 0.3s ease";
+        });
+        link.addEventListener("mouseout", () => {
+            link.style.transform = "scale(1)";
+        });
+    });
+});

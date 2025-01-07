@@ -52,3 +52,29 @@ document.getElementById("menu-toggle").addEventListener("click", function () {
     const menu = document.getElementById("menu");
     menu.classList.toggle("show");
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const registerButton = document.querySelector("#registerForm button");
+    registerButton.addEventListener("mouseover", () => {
+        registerButton.style.transform = "scale(1.04)";
+        registerButton.style.transition = "transform 0.3s ease";
+    });
+    registerButton.addEventListener("mouseout", () => {
+        registerButton.style.transform = "scale(1)";
+    });
+    const sections = document.querySelectorAll("section");
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = "1";
+                entry.target.style.transform = "translateY(0)";
+                entry.target.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+            }
+        });
+    }, { threshold: 0.1 });
+
+    sections.forEach((section) => {
+        section.style.opacity = "0";
+        section.style.transform = "translateY(50px)";
+        observer.observe(section);
+    });
+});
