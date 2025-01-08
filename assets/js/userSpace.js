@@ -24,6 +24,7 @@ window.onload = function() {
                     document.getElementById("name").innerText = data.name;
                     document.getElementById("username").innerText = data.usuario;
                     document.getElementById("userId").innerText = data.id;
+                    document.getElementById("nif").innerText = data.nif;
                     getRecentClients(data.nif);
                     getRecentProjects(data.nif);
                     getBills(data.nif);
