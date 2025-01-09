@@ -151,7 +151,9 @@ main {
 #intro .btn:hover {
     background-color: #45a049;
 }
-
+.containervideo{
+    text-align: center;
+}
 /* Section Features */
 #features {
     background-color: #fff;
